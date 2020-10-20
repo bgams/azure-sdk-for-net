@@ -4,6 +4,7 @@
 using System;
 using Azure.Core.TestFramework;
 using Azure.Identity;
+using Azure.Learn.Computation.Models;
 
 namespace Azure.Learn.Computation.Samples
 {
@@ -11,9 +12,9 @@ namespace Azure.Learn.Computation.Samples
     {
         public void CreateComputeNode()
         {
-            string endpoint = "http://example.azconfig.io";
+            string endpoint = "http://example.azcompute.io";
             ComputationClient client = new ComputationClient(new Uri(endpoint), new DefaultAzureCredential());
-            var response = client.CreateComputeNode("testWindowsNode");
+            var response = client.CreateComputeNode(new WindowsComputeNode("testNode", "admin"));
 
             Console.WriteLine(response.Value.Name);
         }

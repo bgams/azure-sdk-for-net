@@ -9,22 +9,6 @@ using Azure.Core;
 namespace Azure.Learn.Computation
 {
     /// <summary>
-    /// Compute node type
-    /// </summary>
-    public enum ComputeNodeType
-    {
-        /// <summary>
-        /// Windows node
-        /// </summary>
-        Windows,
-
-        /// <summary>
-        /// Linux Node
-        /// </summary>
-        Linux
-    }
-
-    /// <summary>
     /// Computation client
     /// </summary>
     public class ComputationClient
@@ -53,11 +37,10 @@ namespace Azure.Learn.Computation
         /// <summary>
         /// Create a compute node
         /// </summary>
-        /// <param name="name">name of the node</param>
-        /// <param name="nodeType">type of the node</param>
+        /// <param name="node">Node to create</param>
         /// <param name="cancellationToken">token to cancel operation</param>
         /// <returns>Created <see cref="ComputeNode"/></returns>
-        public virtual Response<ComputeNode> CreateComputeNode(string name, ComputeNodeType nodeType = ComputeNodeType.Windows, CancellationToken cancellationToken = default)
+        public virtual Response<ComputeNode> CreateComputeNode(ComputeNode node, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -65,11 +48,10 @@ namespace Azure.Learn.Computation
         /// <summary>
         /// Create a compute node
         /// </summary>
-        /// <param name="name">name of the node</param>
-        /// <param name="nodeType">type of the node</param>
+        /// <param name="node">Node to create</param>
         /// <param name="cancellationToken">token to cancel operation</param>
         /// <returns>Created <see cref="ComputeNode"/></returns>
-        public virtual async Task<Response<ComputeNode>> CreateComputeNodeAsync(string name, ComputeNodeType nodeType = ComputeNodeType.Windows, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ComputeNode>> CreateComputeNodeAsync(ComputeNode node, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();
@@ -123,11 +105,10 @@ namespace Azure.Learn.Computation
         /// </summary>
         /// <param name="name">Name of the node to use</param>
         /// <param name="precision">Precision of pi</param>
-        /// <param name="createIfNotExist">Create the node if it doesn't exist</param>
-        /// <param name="createIfNotExistNodeType">Node type to use if we create the node on the fly</param>
+        /// <param name="nodeToCreateIfNotExist">Node to create if it doesn't exist</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual Response<ComputationOperation> StartComputation(string name, int? precision = null, bool createIfNotExist = false, ComputeNodeType createIfNotExistNodeType = ComputeNodeType.Windows, CancellationToken cancellationToken = default)
+        public virtual Response<ComputationOperation> StartComputation(string name, int? precision = null, ComputeNode nodeToCreateIfNotExist = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -137,11 +118,10 @@ namespace Azure.Learn.Computation
         /// </summary>
         /// <param name="name">Name of the node to use</param>
         /// <param name="precision">Precision of pi</param>
-        /// <param name="createIfNotExist">Create the node if it doesn't exist</param>
-        /// <param name="createIfNotExistNodeType">Node type to use if we create the node on the fly</param>
+        /// <param name="nodeToCreateIfNotExist">Node to create if it doesn't exist</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual async Task<Response<ComputationOperation>> StartComputationAsync(string name, int? precision = null, bool createIfNotExist = false, ComputeNodeType createIfNotExistNodeType = ComputeNodeType.Windows, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ComputationOperation>> StartComputationAsync(string name, int? precision = null, ComputeNode nodeToCreateIfNotExist = null, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();
