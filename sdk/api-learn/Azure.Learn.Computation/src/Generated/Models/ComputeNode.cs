@@ -6,8 +6,9 @@
 #nullable disable
 
 using System;
+using Azure;
 
-namespace Azure.Learn.Computation.Models
+namespace Azure.Learn.Computation
 {
     /// <summary> The ComputeNode. </summary>
     public partial class ComputeNode
@@ -29,15 +30,12 @@ namespace Azure.Learn.Computation.Models
         /// <param name="eTag"> An HTTP ETag. </param>
         /// <param name="name"> The name of the compute node. </param>
         /// <param name="kind"> . </param>
-        internal ComputeNode(string eTag, string name, string kind)
+        internal ComputeNode(ETag eTag, string name, string kind)
         {
             ETag = eTag;
             Name = name;
             Kind = kind;
         }
-
-        /// <summary> An HTTP ETag. </summary>
-        public string ETag { get; }
         /// <summary> The name of the compute node. </summary>
         public string Name { get; }
         internal string Kind { get; set; }

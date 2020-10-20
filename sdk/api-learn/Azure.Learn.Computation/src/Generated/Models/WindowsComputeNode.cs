@@ -6,6 +6,8 @@
 #nullable disable
 
 using System;
+using Azure;
+using Azure.Learn.Computation;
 
 namespace Azure.Learn.Computation.Models
 {
@@ -36,7 +38,7 @@ namespace Azure.Learn.Computation.Models
         /// <param name="name"> The name of the compute node. </param>
         /// <param name="kind"> . </param>
         /// <param name="userName"> The Windows user name. </param>
-        internal WindowsComputeNode(string eTag, string name, string kind, string userName) : base(eTag, name, kind)
+        internal WindowsComputeNode(ETag eTag, string name, string kind, string userName) : base(eTag, name, kind)
         {
             UserName = userName;
             Kind = kind ?? "WindowsComputeNode";

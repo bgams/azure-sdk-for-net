@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Azure.Core;
 
-namespace Azure.Learn.Computation.Models
+namespace Azure.Learn.Computation
 {
-    public partial class PageOfComputeNodes
+    internal partial class PageOfComputeNodes
     {
         internal static PageOfComputeNodes DeserializePageOfComputeNodes(JsonElement element)
         {

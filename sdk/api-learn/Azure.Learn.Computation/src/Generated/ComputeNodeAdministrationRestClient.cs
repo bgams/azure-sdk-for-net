@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
 using Azure.Core.Pipeline;
-using Azure.Learn.Computation.Models;
 
 namespace Azure.Learn.Computation
 {
@@ -52,6 +51,7 @@ namespace Azure.Learn.Computation
             uri.Reset(endpoint);
             uri.AppendPath("/ComputeNodes", false);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
@@ -108,6 +108,7 @@ namespace Azure.Learn.Computation
                 request.Headers.Add("if-match", ifMatch);
             }
             request.Headers.Add("Content-Type", "application/json");
+            request.Headers.Add("Accept", "application/json");
             if (computeNode != null)
             {
                 var content = new Utf8JsonRequestContent();
@@ -171,6 +172,7 @@ namespace Azure.Learn.Computation
             uri.AppendPath("/ComputeNodes/", false);
             uri.AppendPath(nodeName, true);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
@@ -221,6 +223,7 @@ namespace Azure.Learn.Computation
             uri.Reset(endpoint);
             uri.AppendRawNextLink(nextLink, false);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 

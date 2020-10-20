@@ -11,21 +11,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Pipeline;
-using Azure.Learn.Computation.Models;
 
 namespace Azure.Learn.Computation
 {
-    internal partial class ServiceRestClient
+    internal partial class ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitRestClient
     {
         private Uri endpoint;
         private ClientDiagnostics _clientDiagnostics;
         private HttpPipeline _pipeline;
 
-        /// <summary> Initializes a new instance of ServiceRestClient. </summary>
+        /// <summary> Initializes a new instance of ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitRestClient. </summary>
         /// <param name="clientDiagnostics"> The handler for diagnostic messaging in the client. </param>
         /// <param name="pipeline"> The HTTP pipeline for sending and receiving REST requests and responses. </param>
         /// <param name="endpoint"> server parameter. </param>
-        public ServiceRestClient(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, Uri endpoint = null)
+        public ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitRestClient(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, Uri endpoint = null)
         {
             endpoint ??= new Uri("");
 
@@ -44,13 +43,14 @@ namespace Azure.Learn.Computation
             uri.AppendPath("/operations/", false);
             uri.AppendPath(operationId, true);
             request.Uri = uri;
+            request.Headers.Add("Accept", "application/json");
             return message;
         }
 
         /// <param name="operationId"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="operationId"/> is null. </exception>
-        public async Task<ResponseWithHeaders<Operation, ServiceComputationHeaders>> ComputationAsync(string operationId, CancellationToken cancellationToken = default)
+        public async Task<ResponseWithHeaders<ComputePiOperation, ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders>> ComputationAsync(string operationId, CancellationToken cancellationToken = default)
         {
             if (operationId == null)
             {
@@ -59,14 +59,14 @@ namespace Azure.Learn.Computation
 
             using var message = CreateComputationRequest(operationId);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
-            var headers = new ServiceComputationHeaders(message.Response);
+            var headers = new ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders(message.Response);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        Operation value = default;
+                        ComputePiOperation value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = Operation.DeserializeOperation(document.RootElement);
+                        value = ComputePiOperation.DeserializeComputePiOperation(document.RootElement);
                         return ResponseWithHeaders.FromValue(value, headers, message.Response);
                     }
                 default:
@@ -77,7 +77,7 @@ namespace Azure.Learn.Computation
         /// <param name="operationId"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="operationId"/> is null. </exception>
-        public ResponseWithHeaders<Operation, ServiceComputationHeaders> Computation(string operationId, CancellationToken cancellationToken = default)
+        public ResponseWithHeaders<ComputePiOperation, ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders> Computation(string operationId, CancellationToken cancellationToken = default)
         {
             if (operationId == null)
             {
@@ -86,14 +86,14 @@ namespace Azure.Learn.Computation
 
             using var message = CreateComputationRequest(operationId);
             _pipeline.Send(message, cancellationToken);
-            var headers = new ServiceComputationHeaders(message.Response);
+            var headers = new ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders(message.Response);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        Operation value = default;
+                        ComputePiOperation value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = Operation.DeserializeOperation(document.RootElement);
+                        value = ComputePiOperation.DeserializeComputePiOperation(document.RootElement);
                         return ResponseWithHeaders.FromValue(value, headers, message.Response);
                     }
                 default:
