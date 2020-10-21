@@ -60,10 +60,10 @@ namespace Azure.Learn.Computation
         /// <summary>
         /// Get a compute node
         /// </summary>
-        /// <param name="name">name of the node</param>
+        /// <param name="nodeName">name of the node</param>
         /// <param name="cancellationToken">token to cancel operation</param>
         /// <returns>Returned <see cref="ComputeNode"/></returns>
-        public virtual Response<ComputeNode> GetComputeNode(string name, CancellationToken cancellationToken = default)
+        public virtual Response<ComputeNode> GetComputeNode(string nodeName, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -71,10 +71,10 @@ namespace Azure.Learn.Computation
         /// <summary>
         /// Get a compute node
         /// </summary>
-        /// <param name="name">name of the node</param>
+        /// <param name="nodeName">name of the node</param>
         /// <param name="cancellationToken">token to cancel operation</param>
         /// <returns>Returned <see cref="ComputeNode"/></returns>
-        public virtual async Task<Response<ComputeNode>> GetComputeNodeAsync(string name, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ComputeNode>> GetComputeNodeAsync(string nodeName, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();
@@ -105,10 +105,9 @@ namespace Azure.Learn.Computation
         /// </summary>
         /// <param name="name">Name of the node to use</param>
         /// <param name="precision">Precision of pi</param>
-        /// <param name="nodeToCreateIfNotExist">Node to create if it doesn't exist</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual Response<ComputationOperation> StartComputation(string name, int? precision = null, ComputeNode nodeToCreateIfNotExist = null, CancellationToken cancellationToken = default)
+        public virtual ComputationOperation StartPiComputation(string name, int? precision = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -118,10 +117,9 @@ namespace Azure.Learn.Computation
         /// </summary>
         /// <param name="name">Name of the node to use</param>
         /// <param name="precision">Precision of pi</param>
-        /// <param name="nodeToCreateIfNotExist">Node to create if it doesn't exist</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual async Task<Response<ComputationOperation>> StartComputationAsync(string name, int? precision = null, ComputeNode nodeToCreateIfNotExist = null, CancellationToken cancellationToken = default)
+        public virtual async Task<ComputationOperation> StartPiComputationAsync(string name, int? precision = null, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();
@@ -134,7 +132,7 @@ namespace Azure.Learn.Computation
         /// <param name="precision">Precision of pi</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual Response<ComputationOperation> StartComputationWithNewNode(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
+        public virtual ComputationOperation StartPiComputationWithNewNode(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -146,7 +144,7 @@ namespace Azure.Learn.Computation
         /// <param name="precision">Precision of pi</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual async Task<Response<ComputationOperation>> StartComputationWithNewNodeAsync(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
+        public virtual async Task<ComputationOperation> StartPiComputationWithNewNodeAsync(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();

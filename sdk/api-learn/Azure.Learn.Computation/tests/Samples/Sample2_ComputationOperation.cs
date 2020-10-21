@@ -5,7 +5,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core.TestFramework;
 using Azure.Identity;
-using Azure.Learn.Computation.Models;
 using Azure.Learn.Computation.Samples;
 
 namespace Azure.Learn.Computation.Tests.Samples
@@ -17,8 +16,7 @@ namespace Azure.Learn.Computation.Tests.Samples
             string endpoint = "http://example.azcompute.io";
             ComputationClient client = new ComputationClient(new Uri(endpoint), new DefaultAzureCredential());
 
-            var response = client.StartComputation("linuxNode", 18, new LinuxComputeNode("linuxNode", Guid.NewGuid().ToString()));
-            var operation = response.Value;
+            var operation = client.StartPiComputation("linuxNode", 18);
 
             Console.WriteLine($"Operation started on {operation.Value.CreatedDateTime}");
 
