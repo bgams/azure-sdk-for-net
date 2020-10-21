@@ -126,5 +126,30 @@ namespace Azure.Learn.Computation
             await Task.Yield();
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Start a computation with new node
+        /// </summary>
+        /// <param name="nodeToCreate">Node to create</param>
+        /// <param name="precision">Precision of pi</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>Long running computation operation</returns>
+        public virtual Response<ComputationOperation> StartComputationWithNewNode(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Start a computation with new node
+        /// </summary>
+        /// <param name="nodeToCreate">Node to create</param>
+        /// <param name="precision">Precision of pi</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>Long running computation operation</returns>
+        public virtual async Task<Response<ComputationOperation>> StartComputationWithNewNodeAsync(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
+        {
+            await Task.Yield();
+            throw new NotImplementedException();
+        }
     }
 }
