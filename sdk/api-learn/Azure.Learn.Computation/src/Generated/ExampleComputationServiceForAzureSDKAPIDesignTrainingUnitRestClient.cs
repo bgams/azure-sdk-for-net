@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.Pipeline;
+using Azure.Learn.Computation.Models;
 
 namespace Azure.Learn.Computation
 {
@@ -50,7 +51,7 @@ namespace Azure.Learn.Computation
         /// <param name="operationId"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="operationId"/> is null. </exception>
-        public async Task<ResponseWithHeaders<ComputePiOperation, ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders>> ComputationAsync(string operationId, CancellationToken cancellationToken = default)
+        public async Task<ResponseWithHeaders<ComputePiProgress, ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders>> ComputationAsync(string operationId, CancellationToken cancellationToken = default)
         {
             if (operationId == null)
             {
@@ -64,9 +65,9 @@ namespace Azure.Learn.Computation
             {
                 case 200:
                     {
-                        ComputePiOperation value = default;
+                        ComputePiProgress value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = ComputePiOperation.DeserializeComputePiOperation(document.RootElement);
+                        value = ComputePiProgress.DeserializeComputePiProgress(document.RootElement);
                         return ResponseWithHeaders.FromValue(value, headers, message.Response);
                     }
                 default:
@@ -77,7 +78,7 @@ namespace Azure.Learn.Computation
         /// <param name="operationId"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="operationId"/> is null. </exception>
-        public ResponseWithHeaders<ComputePiOperation, ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders> Computation(string operationId, CancellationToken cancellationToken = default)
+        public ResponseWithHeaders<ComputePiProgress, ExampleComputationServiceForAzureSDKAPIDesignTrainingUnitComputationHeaders> Computation(string operationId, CancellationToken cancellationToken = default)
         {
             if (operationId == null)
             {
@@ -91,9 +92,9 @@ namespace Azure.Learn.Computation
             {
                 case 200:
                     {
-                        ComputePiOperation value = default;
+                        ComputePiProgress value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = ComputePiOperation.DeserializeComputePiOperation(document.RootElement);
+                        value = ComputePiProgress.DeserializeComputePiProgress(document.RootElement);
                         return ResponseWithHeaders.FromValue(value, headers, message.Response);
                     }
                 default:

@@ -8,13 +8,12 @@
 using System;
 using System.Text.Json;
 using Azure.Core;
-using Azure.Learn.Computation.Models;
 
-namespace Azure.Learn.Computation
+namespace Azure.Learn.Computation.Models
 {
-    public partial class ComputePiOperation
+    public partial class ComputePiProgress
     {
-        internal static ComputePiOperation DeserializeComputePiOperation(JsonElement element)
+        internal static ComputePiProgress DeserializeComputePiProgress(JsonElement element)
         {
             Optional<DateTimeOffset> createdDateTime = default;
             Optional<float> percentComplete = default;
@@ -43,7 +42,7 @@ namespace Azure.Learn.Computation
                     continue;
                 }
             }
-            return new ComputePiOperation(Optional.ToNullable(createdDateTime), Optional.ToNullable(percentComplete), Optional.ToNullable(status), Optional.ToNullable(value));
+            return new ComputePiProgress(Optional.ToNullable(createdDateTime), Optional.ToNullable(percentComplete), Optional.ToNullable(status), Optional.ToNullable(value));
         }
     }
 }

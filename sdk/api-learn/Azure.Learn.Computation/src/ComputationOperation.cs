@@ -4,11 +4,12 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Azure.Learn.Computation.Models;
 
 namespace Azure.Learn.Computation
 {
     /// <inheritdoc />
-    public class ComputationOperation : Operation<ComputePiOperation>
+    public class ComputationOperation : Operation<ComputePiProgress>
     {
         /// <inheritdoc/>
         public override Response GetRawResponse()
@@ -17,13 +18,13 @@ namespace Azure.Learn.Computation
         }
 
         /// <inheritdoc/>
-        public override ValueTask<Response<ComputePiOperation>> WaitForCompletionAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override ValueTask<Response<ComputePiProgress>> WaitForCompletionAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             throw new NotImplementedException();
         }
 
         /// <inheritdoc/>
-        public override ValueTask<Response<ComputePiOperation>> WaitForCompletionAsync(TimeSpan pollingInterval, CancellationToken cancellationToken)
+        public override ValueTask<Response<ComputePiProgress>> WaitForCompletionAsync(TimeSpan pollingInterval, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +45,7 @@ namespace Azure.Learn.Computation
         public override string Id { get; }
 
         /// <inheritdoc/>
-        public override ComputePiOperation Value { get; }
+        public override ComputePiProgress Value { get; }
 
         /// <inheritdoc/>
         public override bool HasCompleted { get; }

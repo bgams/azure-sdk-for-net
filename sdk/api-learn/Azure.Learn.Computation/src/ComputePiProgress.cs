@@ -3,14 +3,14 @@
 
 using Azure.Core;
 
-namespace Azure.Learn.Computation
+namespace Azure.Learn.Computation.Models
 {
     /// <summary>
     /// Computer operation model
     /// </summary>
 
     [CodeGenModel("Operation")]
-    public partial class ComputePiOperation
+    public partial class ComputePiProgress
     {
 
     }

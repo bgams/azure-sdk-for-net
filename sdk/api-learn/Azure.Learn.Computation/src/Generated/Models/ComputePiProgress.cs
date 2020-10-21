@@ -6,24 +6,23 @@
 #nullable disable
 
 using System;
-using Azure.Learn.Computation.Models;
 
-namespace Azure.Learn.Computation
+namespace Azure.Learn.Computation.Models
 {
     /// <summary> The Operation. </summary>
-    public partial class ComputePiOperation
+    public partial class ComputePiProgress
     {
-        /// <summary> Initializes a new instance of ComputePiOperation. </summary>
-        internal ComputePiOperation()
+        /// <summary> Initializes a new instance of ComputePiProgress. </summary>
+        internal ComputePiProgress()
         {
         }
 
-        /// <summary> Initializes a new instance of ComputePiOperation. </summary>
+        /// <summary> Initializes a new instance of ComputePiProgress. </summary>
         /// <param name="createdDateTime"> Date and time (UTC) when the operation was submitted. </param>
         /// <param name="percentComplete"> The completion state of the operation. </param>
         /// <param name="status"> The current status of the operation. </param>
         /// <param name="value"> The computed value. </param>
-        internal ComputePiOperation(DateTimeOffset? createdDateTime, float? percentComplete, OperationStatus? status, float? value)
+        internal ComputePiProgress(DateTimeOffset? createdDateTime, float? percentComplete, OperationStatus? status, float? value)
         {
             CreatedDateTime = createdDateTime;
             PercentComplete = percentComplete;
