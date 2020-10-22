@@ -9,7 +9,7 @@ using Azure.Learn.Computation.Models;
 namespace Azure.Learn.Computation
 {
     /// <inheritdoc />
-    public class ComputationOperation : Operation<ComputePiProgress>
+    public class ComputePiOperation : Operation<ComputePiProgress>
     {
         /// <inheritdoc/>
         public override Response GetRawResponse()

@@ -7,7 +7,6 @@
 
 using System;
 using Azure;
-using Azure.Learn.Computation;
 
 namespace Azure.Learn.Computation.Models
 {

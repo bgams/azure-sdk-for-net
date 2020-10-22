@@ -7,7 +7,6 @@
 
 using System;
 using Azure;
-using Azure.Learn.Computation;
 
 namespace Azure.Learn.Computation.Models
 {
@@ -43,8 +42,5 @@ namespace Azure.Learn.Computation.Models
             SshPublicKey = sshPublicKey;
             Kind = kind ?? "LinuxComputeNode";
         }
-
-        /// <summary> The compute node&apos;s public key. </summary>
-        public string SshPublicKey { get; set; }
     }
 }

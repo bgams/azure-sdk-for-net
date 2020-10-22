@@ -6,15 +6,16 @@ using Azure.Core;
 namespace Azure.Learn.Computation.Models
 {
     /// <summary>
-    /// Compute node model
+    /// Linux compute node
     /// </summary>
-    [CodeGenModel("ComputeNode")]
-    public partial class ComputeNode
+
+    [CodeGenModel("LinuxComputeNode")]
+    public partial class LinuxComputeNode
     {
         /// <summary>
-        /// Etag
+        /// Ssh public key
         /// </summary>
-        [CodeGenMember("Etag")]
-        public ETag ETag { get; }
+        [CodeGenMember("SshPublicKey")]
+        public string SshPublicKey { get; }
     }
 }

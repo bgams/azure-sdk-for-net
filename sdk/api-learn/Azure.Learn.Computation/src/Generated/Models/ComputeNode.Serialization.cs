@@ -8,9 +8,8 @@
 using System.Text.Json;
 using Azure;
 using Azure.Core;
-using Azure.Learn.Computation.Models;
 
-namespace Azure.Learn.Computation
+namespace Azure.Learn.Computation.Models
 {
     public partial class ComputeNode : IUtf8JsonSerializable
     {

@@ -8,7 +8,7 @@
 using System;
 using Azure;
 
-namespace Azure.Learn.Computation
+namespace Azure.Learn.Computation.Models
 {
     /// <summary> The ComputeNode. </summary>
     public partial class ComputeNode

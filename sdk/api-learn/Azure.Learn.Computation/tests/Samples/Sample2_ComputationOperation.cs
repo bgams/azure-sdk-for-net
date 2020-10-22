@@ -16,7 +16,7 @@ namespace Azure.Learn.Computation.Tests.Samples
             string endpoint = "http://example.azcompute.io";
             ComputationClient client = new ComputationClient(new Uri(endpoint), new DefaultAzureCredential());
 
-            var operation = client.StartPiComputation("linuxNode", 18);
+            var operation = client.StartComputePi("linuxNode", 18);
 
             Console.WriteLine($"Operation started on {operation.Value.CreatedDateTime}");
 

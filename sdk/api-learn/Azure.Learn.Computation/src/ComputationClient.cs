@@ -5,6 +5,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
+using Azure.Core.Pipeline;
+using Azure.Learn.Computation.Models;
 
 namespace Azure.Learn.Computation
 {
@@ -13,6 +15,10 @@ namespace Azure.Learn.Computation
     /// </summary>
     public class ComputationClient
     {
+        private HttpPipeline _pipeline;
+        private ClientDiagnostics _clientDiagnostics;
+        private Uri _endpoint;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -26,6 +32,14 @@ namespace Azure.Learn.Computation
 #pragma warning disable CA1801 // Parameter is never used
         public ComputationClient(Uri endpoint, TokenCredential credential, ComputationClientOptions options)
         {
+            //Argument.AssertNotNull(endpoint, nameof(endpoint));
+            //Argument.AssertNotNull(endpoint, nameof(endpoint));
+            //Argument.AssertNotNull(endpoint, nameof(endpoint));
+
+            _pipeline = HttpPipelineBuilder.Build(options);
+            _clientDiagnostics = new ClientDiagnostics(options);
+            _endpoint = endpoint;
+
         }
 #pragma warning restore CA1801 // Parameter is never used
 
@@ -107,7 +121,7 @@ namespace Azure.Learn.Computation
         /// <param name="precision">Precision of pi</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual ComputationOperation StartPiComputation(string name, int? precision = null, CancellationToken cancellationToken = default)
+        public virtual ComputePiOperation StartComputePi(string name, int? precision = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -119,7 +133,7 @@ namespace Azure.Learn.Computation
         /// <param name="precision">Precision of pi</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual async Task<ComputationOperation> StartPiComputationAsync(string name, int? precision = null, CancellationToken cancellationToken = default)
+        public virtual async Task<ComputePiOperation> StartComputePiAsync(string name, int? precision = null, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();
@@ -132,7 +146,7 @@ namespace Azure.Learn.Computation
         /// <param name="precision">Precision of pi</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual ComputationOperation StartPiComputationWithNewNode(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
+        public virtual ComputePiOperation StartComputePiWithNewNode(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -144,7 +158,7 @@ namespace Azure.Learn.Computation
         /// <param name="precision">Precision of pi</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>Long running computation operation</returns>
-        public virtual async Task<ComputationOperation> StartPiComputationWithNewNodeAsync(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
+        public virtual async Task<ComputePiOperation> StartComputePiWithNewNodeAsync(ComputeNode nodeToCreate, int? precision = null, CancellationToken cancellationToken = default)
         {
             await Task.Yield();
             throw new NotImplementedException();
